@@ -79,4 +79,9 @@ def test_predict_mixed_case(client):
     data = response.json
     assert 'prediction' in data
     assert 'sentiment' in data
-    assert 'confidence' in data 
+    assert 'confidence' in data
+
+def test_version(client):
+    response = client.get('/version')
+    assert response.status_code == 200
+    assert response.json == {'version': '1.0.0'} 
